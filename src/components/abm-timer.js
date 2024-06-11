@@ -10,7 +10,7 @@ export class AbmTimer extends LitElement {
 
     render() {
         return html`
-        <p>parece que ya sí</p>
+        <p>MI PRIMER COMPONENTE EN LITELEMENT</p>
         `;
     }
 }
