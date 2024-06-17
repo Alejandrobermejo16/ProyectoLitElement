@@ -14,7 +14,7 @@ export class AbmMenuOverlay extends LitElement {
   static get properties() {
     return {
       sectionVisible: { type: Boolean },
-      checkboxActive: { type: Boolean }
+      checkboxActive: { type: Boolean },
     };
   }
 
@@ -114,13 +114,22 @@ export class AbmMenuOverlay extends LitElement {
             </section>
           `
         : ""}
-        <!-- el punto indica que estás enlazando esa propiedad a una variable o expresión JavaScript dentro del componente hijo -->
-         <!-- por ejemplo en este caso la clase css dependera de una prop definida en el hijo -->
       <abm-checkbox-prueba 
         .checked="${this.checkboxActive}"  
-        @checkbox-changed="${this._onCheckboxChanged}">
+        @checkbox-changed="${this._onCheckboxChanged}"
+        .hola="${this.hola}"       
+        @click="${this.toggleCheckbox}"
+      >
       </abm-checkbox-prueba>
     `;
+  }
+
+  toggleCheckbox() {
+    console.log("Me estoy ejecutando al ser pulsado el checkbox usado en el padre");
+    const checkbox = this.shadowRoot.querySelector('abm-checkbox-prueba'); //rescatamos las propiedades y funciones/metodos del hijo
+    checkbox.toggleChecked(); // Llama al método toggleChecked() del hijo
+    checkbox.title = 'titulo checkbox' //ademas se puede cambiar cualquier atributo del hijo que tenga ya que pasamos valor desde el padre
+    this.hola="este mensaje cambia cuando pulso el checkbox"
   }
 
   _onCheckboxChanged(e) {

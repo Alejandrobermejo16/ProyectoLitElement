@@ -45,6 +45,7 @@ export class AbmCheckboxPrueba extends LitElement {
     return {
       checked: { type: Boolean },
       checkboxClass: { type: String },
+      hola: { type: String },
     };
   }
 
@@ -52,6 +53,7 @@ export class AbmCheckboxPrueba extends LitElement {
     super();
     this.checked = false;
     this.checkboxClass = "custom-checkbox";
+    this.hola = '';
   }
 
   render() {
@@ -62,6 +64,7 @@ export class AbmCheckboxPrueba extends LitElement {
         .checked="${this.checked}"
         @change="${this._onCheckboxChange}"
       />
+      <p>${this.hola}</p>
     `;
   }
 
@@ -72,6 +75,17 @@ export class AbmCheckboxPrueba extends LitElement {
         detail: { checked: this.checked },
       })
     );
+  }
+
+
+  comunicarmeconpadre() {
+    this.hola = "valor que tengo en el hijo"
+  }
+
+
+  // Método para cambiar el estado del checkbox desde el padre
+  toggleChecked() {
+    this.checked = !this.checked;
   }
 }
 
