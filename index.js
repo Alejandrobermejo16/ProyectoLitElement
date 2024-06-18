@@ -5,4 +5,4 @@ import './src/components/abm-checkbox';
 import './src/components/abm-checkbox-prueba';
 import './src/components/abm-hijo';
 import './src/components/abm-padre';
-
+import './src/components/abm-accesors';
